@@ -1,17 +1,16 @@
-# Guix
-#
-# VERSION               1.0.0
+# Originally forked from git@github.com:bmpvieira/Dockerfiles.git
 
 FROM gliderlabs/alpine
-MAINTAINER Bruno Vieira <mail@bmpvieira.com>
 
-LABEL Description="This is a minimal Linux (Alpine) with GNU Guix package manager" Version="1.0.0"
+MAINTAINER Rudolf Olah <omouse@gmail.com>
+
+LABEL Description="This is a minimal Linux (Alpine) with GNU Guix package manager" Version="2.0.0"
 
 ENV PATH /root/.guix-profile/bin:$PATH
 
 RUN cd /tmp
-RUN wget ftp://alpha.gnu.org/gnu/guix/guix-binary-0.8.3.x86_64-linux.tar.xz
-RUN tar xJf guix-binary-0.8.3.x86_64-linux.tar.xz
+RUN wget ftp://alpha.gnu.org/gnu/guix/guix-binary-0.10.0.x86_64-linux.tar.xz
+RUN tar xJf guix-binary-0.10.0.x86_64-linux.tar.xz
 RUN mv var/guix /var/ && mv gnu /
 RUN ln -sf /var/guix/profiles/per-user/root/guix-profile ~root/.guix-profile
 RUN guix archive --authorize < ~root/.guix-profile/share/guix/hydra.gnu.org.pub
